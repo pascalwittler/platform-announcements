@@ -5,3 +5,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+html {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font-family), sans-serif;
+  line-height: 22px;
+}
