@@ -9,3 +9,7 @@ form input {
   width: 100%;
   height: 90px;
 }
+
+form input:focus-visible {
+  outline: none;
+}
