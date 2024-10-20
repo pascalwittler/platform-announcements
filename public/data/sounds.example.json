@@ -1,0 +1,14 @@
+{
+  "sounds": [
+    {
+      "file": "gong/neu.wav",
+      "text": "Gong (neu)",
+      "category": "Gong"
+    },
+    {
+      "file": "gong/alt.wav",
+      "text": "Gong (alt)",
+      "category": "Gong"
+    }
+  ]
+}
