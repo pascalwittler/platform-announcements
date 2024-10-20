@@ -12,3 +12,8 @@ html {
   font-family: var(--font-family), sans-serif;
   line-height: 22px;
 }
+
+html,
+body {
+  background-color: var(--color-primary);
+}

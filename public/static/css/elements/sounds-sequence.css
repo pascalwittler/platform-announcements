@@ -2,4 +2,6 @@
   grid-row: 2 / 3;
   grid-column: 2 / 3;
   min-height: 360px;
+  border: 3px solid var(--color-secondary);
+  background-color: var(--color-white);
 }
