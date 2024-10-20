@@ -1,0 +1,12 @@
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  display: grid;
+  grid-template-columns: calc((100vw - 1280px) / 2) minmax(0, 1fr) calc((100vw - 1280px) / 2);
+  grid-template-rows: 1fr auto auto 1fr;
+  gap: 30px;
+}

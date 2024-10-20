@@ -1,0 +1,11 @@
+form {
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  display: block;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  height: 90px;
+}
