@@ -1,5 +1,6 @@
 class PlatformAnnouncementsInterface {
   static LOCAL_STORAGE_KEY = 'platform-announcements-sounds-sequence';
+  static KEY_PLAY = 'F9';
 
   constructor() {
     this.soundsSequenceDomElement = document.querySelector('.sounds-sequence');
@@ -27,6 +28,12 @@ class PlatformAnnouncementsInterface {
       }
       catch {
         // do nothing
+      }
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === PlatformAnnouncementsInterface.KEY_PLAY) {
+        this.playSoundsSequence();
       }
     });
 
@@ -66,6 +73,22 @@ class PlatformAnnouncementsInterface {
       wrap.appendChild(audio);
       this.soundsSequenceDomElement.appendChild(wrap);
     });
+  }
+
+  playSoundsSequence() {
+    const audioElements = this.soundsSequenceDomElement.querySelectorAll('audio');
+
+    audioElements.forEach((audioElement, key) => {
+      if (key < audioElements.length) {
+        audioElement.addEventListener('ended', () => {
+          audioElements[key + 1].play();
+        });
+      }
+    });
+
+    if (audioElements.length) {
+      audioElements[0].play();
+    }
   }
 
   readLocalStorage() {
