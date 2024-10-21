@@ -22,13 +22,17 @@ class PlatformAnnouncementsInterface {
     });
 
     this.inputDomElement.addEventListener('input', () => {
+      if (!this.inputDomElement.value.startsWith('{') || !this.inputDomElement.value.endsWith('}')) {
+        return;
+      }
+
       try {
         this.soundsSequence.push(JSON.parse(this.inputDomElement.value));
         this.writeLocalStorage();
         this.inputDomElement.value = '';
       }
       catch {
-        // do nothing
+        return;
       }
     });
 
