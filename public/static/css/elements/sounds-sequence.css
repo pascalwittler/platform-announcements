@@ -1,7 +1,27 @@
 .sounds-sequence {
   grid-row: 2 / 3;
   grid-column: 2 / 3;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  justify-content: start;
+  gap: 20px;
   min-height: 360px;
+  padding: 20px;
   border: 3px solid var(--color-secondary);
+  font-size: 30px;
+  line-height: 30px;
   background-color: var(--color-white);
+}
+
+.sounds-sequence .sound {
+  display: block;
+  padding: 8px 12px;
+  border: 3px solid var(--color-primary);
+}
+
+.sounds-sequence .sound audio {
+  display: none;
 }
