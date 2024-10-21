@@ -48,12 +48,34 @@ class PlatformAnnouncementsInterface {
       });
   }
 
+  updateSoundSequenceDomElement() {
+    this.soundsSequenceDomElement.innerHTML = '';
+
+    this.soundsSequence.forEach((sound) => {
+      let wrap = document.createElement('span');
+      wrap.classList.add('sound');
+
+      let text = document.createElement('span');
+      text.classList.add('text');
+      text.innerText = sound.text;
+
+      let audio = document.createElement('audio');
+      audio.src = `data/sounds/${sound.file}`;
+
+      wrap.appendChild(text);
+      wrap.appendChild(audio);
+      this.soundsSequenceDomElement.appendChild(wrap);
+    });
+  }
+
   readLocalStorage() {
     this.soundsSequence = JSON.parse(window.localStorage.getItem(PlatformAnnouncementsInterface.LOCAL_STORAGE_KEY)) ?? [];
+    this.updateSoundSequenceDomElement();
   }
 
   writeLocalStorage() {
     window.localStorage.setItem(PlatformAnnouncementsInterface.LOCAL_STORAGE_KEY, JSON.stringify(this.soundsSequence));
+    this.updateSoundSequenceDomElement();
   }
 }
 
