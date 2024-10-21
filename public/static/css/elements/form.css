@@ -8,7 +8,15 @@ form input {
   display: block;
   width: 100%;
   height: 90px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
   border: 3px solid var(--color-secondary);
+  font-size: 30px;
+  line-height: 30px;
+  text-align: center;
   color: var(--color-secondary);
   background-color: var(--color-white);
 }
