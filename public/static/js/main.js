@@ -1,6 +1,7 @@
 class PlatformAnnouncementsInterface {
   static LOCAL_STORAGE_KEY = 'platform-announcements-sounds-sequence';
   static KEY_PLAY = 'F9';
+  static KEY_CLEAR = 'F2';
 
   constructor() {
     this.soundsSequenceDomElement = document.querySelector('.sounds-sequence');
@@ -34,6 +35,10 @@ class PlatformAnnouncementsInterface {
     window.addEventListener('keydown', (event) => {
       if (event.key === PlatformAnnouncementsInterface.KEY_PLAY) {
         this.playSoundsSequence();
+      }
+
+      if (event.key === PlatformAnnouncementsInterface.KEY_CLEAR) {
+        this.clearSoundsSequence();
       }
     });
 
@@ -89,6 +94,11 @@ class PlatformAnnouncementsInterface {
     if (audioElements.length) {
       audioElements[0].play();
     }
+  }
+
+  clearSoundsSequence() {
+    this.soundsSequence = [];
+    this.writeLocalStorage();
   }
 
   readLocalStorage() {
