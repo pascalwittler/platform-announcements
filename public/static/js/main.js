@@ -4,6 +4,7 @@ class PlatformAnnouncementsInterface {
   constructor() {
     this.soundsSequenceDomElement = document.querySelector('.sounds-sequence');
     this.formDomElement = document.querySelector('form');
+    this.inputDomElement = document.querySelector('form input');
     this.soundsDomElement = document.querySelector('.sounds');
     this.soundsSequence = [];
 
@@ -13,6 +14,21 @@ class PlatformAnnouncementsInterface {
   initialize() {
     this.readLocalStorage();
     this.writeLocalStorage();
+
+    this.formDomElement.addEventListener('submit', (event) => {
+      event.preventDefault();
+    });
+
+    this.inputDomElement.addEventListener('input', () => {
+      try {
+        this.soundsSequence.push(JSON.parse(this.inputDomElement.value));
+        this.writeLocalStorage();
+        this.inputDomElement.value = '';
+      }
+      catch {
+        // do nothing
+      }
+    });
 
     this.fillSoundOptions();
   }
