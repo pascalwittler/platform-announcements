@@ -1,4 +1,6 @@
 class PlatformAnnouncementsInterface {
+  static LOCAL_STORAGE_KEY = 'platform-announcements-sounds-sequence';
+
   constructor() {
     this.soundsSequenceDomElement = document.querySelector('.sounds-sequence');
     this.formDomElement = document.querySelector('form');
@@ -9,6 +11,9 @@ class PlatformAnnouncementsInterface {
   }
 
   initialize() {
+    this.readLocalStorage();
+    this.writeLocalStorage();
+
     this.fillSoundOptions();
   }
 
@@ -28,6 +33,14 @@ class PlatformAnnouncementsInterface {
           this.soundsDomElement.appendChild(option);
         });
       });
+  }
+
+  readLocalStorage() {
+    this.soundsSequence = JSON.parse(window.localStorage.getItem(PlatformAnnouncementsInterface.LOCAL_STORAGE_KEY)) ?? [];
+  }
+
+  writeLocalStorage() {
+    window.localStorage.setItem(PlatformAnnouncementsInterface.LOCAL_STORAGE_KEY, JSON.stringify(this.soundsSequence));
   }
 }
 
