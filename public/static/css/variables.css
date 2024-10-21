@@ -1,6 +1,7 @@
 html {
   --color-primary: #4682b4;
   --color-secondary: #333333;
+  --color-tertiary: #f0c808;
   --color-white: #ffffff;
   --font-family: 'IBM Plex Sans';
 }

@@ -14,6 +14,7 @@ form input {
   align-items: center;
   justify-content: center;
   border: 3px solid var(--color-secondary);
+  box-shadow: 9px 9px var(--color-tertiary);
   font-size: 30px;
   font-family: var(--font-family);
   line-height: 30px;
