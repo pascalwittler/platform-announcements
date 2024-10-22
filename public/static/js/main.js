@@ -68,19 +68,11 @@ class PlatformAnnouncementsInterface {
     this.soundsSequenceDomElement.innerHTML = '';
 
     this.soundsSequence.forEach((sound) => {
-      let wrap = document.createElement('span');
-      wrap.classList.add('sound');
+      let soundSpan = document.createElement('span');
+      soundSpan.classList.add('sound');
+      soundSpan.innerText = sound.text;
 
-      let text = document.createElement('span');
-      text.classList.add('text');
-      text.innerText = sound.text;
-
-      let audio = document.createElement('audio');
-      audio.src = `data/sounds/${sound.file}`;
-
-      wrap.appendChild(text);
-      wrap.appendChild(audio);
-      this.soundsSequenceDomElement.appendChild(wrap);
+      this.soundsSequenceDomElement.appendChild(soundSpan);
     });
   }
 
