@@ -9,6 +9,7 @@ class PlatformAnnouncementsInterface {
     this.inputDomElement = document.querySelector('form input');
     this.soundsDomElement = document.querySelector('.sounds');
     this.soundsSequence = [];
+    this.audioChannels = [];
 
     this.initialize();
   }
@@ -76,6 +77,14 @@ class PlatformAnnouncementsInterface {
     });
   }
 
+  updateAudioChannels() {
+    this.audioChannels = [];
+
+    this.soundsSequence.forEach((sound) => {
+      this.audioChannels.push(new Audio(`data/sounds/${sound.file}`));
+    });
+  }
+
   playSoundsSequence() {
     const audioElements = this.soundsSequenceDomElement.querySelectorAll('audio');
 
@@ -99,11 +108,13 @@ class PlatformAnnouncementsInterface {
 
   readLocalStorage() {
     this.soundsSequence = JSON.parse(window.localStorage.getItem(PlatformAnnouncementsInterface.LOCAL_STORAGE_KEY)) ?? [];
+    this.updateAudioChannels();
     this.updateSoundSequenceDomElement();
   }
 
   writeLocalStorage() {
     window.localStorage.setItem(PlatformAnnouncementsInterface.LOCAL_STORAGE_KEY, JSON.stringify(this.soundsSequence));
+    this.updateAudioChannels();
     this.updateSoundSequenceDomElement();
   }
 }
