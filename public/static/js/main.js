@@ -86,18 +86,16 @@ class PlatformAnnouncementsInterface {
   }
 
   playSoundsSequence() {
-    const audioElements = this.soundsSequenceDomElement.querySelectorAll('audio');
-
-    audioElements.forEach((audioElement, key) => {
-      if (key < audioElements.length) {
-        audioElement.addEventListener('ended', () => {
-          audioElements[key + 1].play();
+    this.audioChannels.forEach((audioChannel, key) => {
+      if (key < this.audioChannels.length) {
+        audioChannel.addEventListener('ended', () => {
+          this.audioChannels[key + 1].play();
         });
       }
     });
 
-    if (audioElements.length) {
-      audioElements[0].play();
+    if (this.audioChannels.length) {
+      this.audioChannels[0].play();
     }
   }
 
